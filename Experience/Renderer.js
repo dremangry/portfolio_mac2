@@ -22,7 +22,7 @@ export default class Renderer {
     this.renderer.useLegacyLights = true;
     this.renderer.outputEncoding = THREE.sRGBEncoding;
     this.renderer.toneMapping = THREE.CineonToneMapping;
-    this.renderer.toneMappingExposure = 1.40; //the tone of the light
+    this.renderer.toneMappingExposure = 1.40; //the tone of the light (it was at 1.75)
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.setSize(this.sizes.width, this.sizes.height);
@@ -35,7 +35,28 @@ export default class Renderer {
   }
 
   update() {
-    // this.renderer.render(this.scene, this.camera.orthographicCamera);
-    this.renderer.render(this.scene, this.camera.perspectiveCamera);
+    // this.renderer.render(this.scene, this.camera.perspectiveCamera);
+
+    //extra split screen
+    // this.renderer.setViewport(0, 0, this.sizes.width, this.sizes.height);
+
+    this.renderer.render(this.scene, this.camera.orthographicCamera);
+
+    //extra for split screen
+    // this.renderer.setScissorTest(true);
+    //     this.renderer.setViewport(
+    //         this.sizes.width - this.sizes.width / 3,
+    //         this.sizes.height - this.sizes.height / 3,
+    //         this.sizes.width / 3,
+    //         this.sizes.height / 3
+    //     );
+    //     this.renderer.setScissor(
+    //         this.sizes.width - this.sizes.width / 3,
+    //         this.sizes.height - this.sizes.height / 3,
+    //         this.sizes.width / 3,
+    //         this.sizes.height / 3
+    //     );
+    //     this.renderer.render(this.scene, this.camera.perspectiveCamera);
+    //     this.renderer.setScissorTest(false);
   }
 }

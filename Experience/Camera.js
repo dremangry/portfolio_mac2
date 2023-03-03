@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import Experience from "./Experience";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 export default class Camera {
   constructor() {
@@ -14,7 +15,7 @@ export default class Camera {
     this.createOrthographicCamera();
     this.setOrbitControls();
   }
-
+    //position of the beginning camera
   createPerspectiveCamera() { //perspective of the camera when the page start
     this.perspectiveCamera = new THREE.PerspectiveCamera(
       35,
@@ -27,28 +28,37 @@ export default class Camera {
     this.perspectiveCamera.position.y = 14;
     this.perspectiveCamera.position.z = 12;
   }
+  //position of the main camera
   createOrthographicCamera() {
     this.orthographicCamera = new THREE.OrthographicCamera(
       (-this.sizes.aspect * this.sizes.frustrum) / 2,
       (this.sizes.aspect * this.sizes.frustrum) / 2,
       this.sizes.frustrum / 2,
       -this.sizes.frustrum / 2,
-      -10,
-      10
+      -50,
+      50
     );
+
+    this.orthographicCamera.position.y = 3.5;
+    this.orthographicCamera.position.z = 5;
+    this.orthographicCamera.rotation.x = -Math.PI / 6;
+
+
+
     this.scene.add(this.orthographicCamera);
         //helper the see the curve
-        this.helper = new THREE.CameraHelper(this.orthographicCamera);
-        this.scene.add(this.helper);
+        // this.helper = new THREE.CameraHelper(this.orthographicCamera);
+        // this.scene.add(this.helper);
 
-    const size = 20;
-    const divisions = 20;
+        //helper the see the grid
+    // const size = 20;
+    // const divisions = 20;
+    // const gridHelper = new THREE.GridHelper(size, divisions);
+    // this.scene.add(gridHelper);
 
-    const gridHelper = new THREE.GridHelper(size, divisions);
-    this.scene.add(gridHelper);
-
-    const axesHelper = new THREE.AxesHelper(10);
-    this.scene.add(axesHelper);
+      //helper the see the z x and y axis
+    // const axesHelper = new THREE.AxesHelper(10);
+    // this.scene.add(axesHelper);
   }
 
   setOrbitControls() {
@@ -74,10 +84,11 @@ export default class Camera {
     // console.log(this.perspectiveCamera.position);
 
     this.controls.update();
-    //to see the curve
-    this.helper.matrixWorldNeedsUpdate = true;
-    this.helper.update();
-    this.helper.position.copy(this.orthographicCamera.position);
-    this.helper.rotation.copy(this.orthographicCamera.rotation);
+
+    // to update the helper
+    // this.helper.matrixWorldNeedsUpdate = true;
+    // this.helper.update();
+    // this.helper.position.copy(this.orthographicCamera.position);
+    // this.helper.rotation.copy(this.orthographicCamera.rotation);
   }
 }
