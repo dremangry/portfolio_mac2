@@ -44,7 +44,7 @@ html, body{
   display: none;
 } */
 
-/* section_page */
+/* section_page---------------------- */
 
 .page{
   z-index:99999;
@@ -58,7 +58,62 @@ html, body{
   position: relative;
 }
 
-/*section_dev */
+/* section_toggle----------------------- */
+
+.toggle-bar{
+  position: fixed;
+  display: flex;
+  /* opacity: 0; */
+  justify-content: center;
+  align-items: center;
+  top: 48px;
+  right: 48px;
+  z-index: 99999999999999;
+}
+
+.sun-wrapper,
+.moon-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* color: var(--color-text); */
+}
+
+.toggle-button{
+  cursor: pointer;
+  position: relative;
+  width: 56px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-pink);
+  border-radius: 999px;
+  margin: 0px 16px;
+  border: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.toggle-circle{
+  position: absolute;
+  left: 6px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-color);
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-button:hover .toggle-circle{
+  transform: scale(0.9);
+}
+
+.slide{
+  left: 31px;
+}
+
+/*section_dev------------------------- */
 .dev{
   width: 100vw;
   height: 100vh;
@@ -154,7 +209,7 @@ html, body{
   /* color: var(--color-text); */
 }
 
-/* section_complexDecoration */
+/* section_complexDecoration----------------------- */
 .section-title{
   position: relative;
   /* color: var(--color-pink) */
