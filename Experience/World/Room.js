@@ -2,6 +2,7 @@ import * as THREE from "three";
 import Experience from "../Experience";
 import GSAP from "gsap";
 import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper.js";
+import { Color } from "three";
 
 export default class Room {
   constructor() {
@@ -12,6 +13,8 @@ export default class Room {
     this.room = this.resources.items.room;
     this.actualRoom = this.room.scene;
     // console.log(this.actualRoom);
+
+    this.theme = this.experience.theme;
 
     this.lerp = {
       current: 0,
@@ -35,20 +38,41 @@ export default class Room {
         });
       }
       // console.log('!!!!!!!!',child);
-      if (child.name === "monitor_image") {
-        child.material = new THREE.MeshBasicMaterial({
+      if (child.name === "Monitors") {
+        console.log('!!!!!!!!', child);
+        child.children[2].material = new THREE.MeshBasicMaterial({
           map: this.resources.items.screen,
         });
       }
 
+      if (child.name === "Floor") {
+        child.position.x = -0.289521;
+        child.position.z = 8.83572;
+      }
+
     });
 
-    const width = 1;
-    const height = 1;
-    const intensity = 1;
-    const rectLight = new THREE.RectAreaLight(0xffffff, intensity, width, height);
-    rectLight.position.set(0, 0, 0);
+    // the light of the lamp
+    const width = 0.4;
+    const height = 0.4;
+    const intensity = 7;
+    const color = '#F39C12'
+
+    const rectLight = new THREE.RectAreaLight(color, intensity, width, height,);
+    rectLight.position.set(-1.3243, 11.9, -1.9);  // X, Z, Y
+    rectLight.rotation.x = -Math.PI / 2;
+    rectLight.rotation.z = Math.PI / 2;
+
     this.actualRoom.add(rectLight)
+
+    // this.theme.on("switch", (theme) => {
+    //   console.log(theme);
+    //   if (theme === 'dark') {
+    //     this.actualRoom.add(rectLight)
+    //   } else {
+      //     this.actualRoom.remove(rectLight)
+      //   }
+      // });
 
     const rectLightHelper = new RectAreaLightHelper(rectLight);
     rectLight.add(rectLightHelper);
@@ -64,7 +88,7 @@ export default class Room {
       this.rotation =
         ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
       // this.lerp.target = this.rotation * 0.05;
-      this.lerp.target = this.rotation * 0.1;
+      this.lerp.target = this.rotation * 0.1; // rotation of the room
     });
   }
 
