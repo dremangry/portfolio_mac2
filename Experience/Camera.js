@@ -39,8 +39,9 @@ export default class Camera {
       50
     );
 
-    this.orthographicCamera.position.y = 3.5;
-    this.orthographicCamera.position.z = 5;
+    // this.orthographicCamera.position.y = 5.5;
+    this.orthographicCamera.position.y = 5.65;
+    this.orthographicCamera.position.z = 10;
     this.orthographicCamera.rotation.x = -Math.PI / 6;
 
 
@@ -56,7 +57,7 @@ export default class Camera {
     // const gridHelper = new THREE.GridHelper(size, divisions);
     // this.scene.add(gridHelper);
 
-      //helper the see the z x and y axis
+    //   helper the see the z x and y axis
     // const axesHelper = new THREE.AxesHelper(10);
     // this.scene.add(axesHelper);
   }

@@ -9,10 +9,10 @@ export default class Room {
     this.experience = new Experience();
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
-    // this.time = this.experience.time;
+    this.time = this.experience.time;
     this.room = this.resources.items.room;
     this.actualRoom = this.room.scene;
-    // console.log(this.actualRoom);
+    this.roomChildren = {};
 
     this.theme = this.experience.theme;
 
@@ -44,12 +44,28 @@ export default class Room {
           map: this.resources.items.screen,
         });
       }
-
+      // hiding the mini floor
       if (child.name === "Floor") {
         child.position.x = -0.289521;
         child.position.z = 8.83572;
       }
 
+      // if (
+      //   child.name === "Backpack" ||
+      //   child.name === "Sox" ||
+      //   child.name === "cube1" ||
+      //   child.name === "cube2" ||
+      //   child.name === "cube3"
+      // ) {
+      //   child.scale.set(0, 0, 0);
+      // }
+      child.scale.set(0, 0, 0);
+      if (child.name === "cube") {
+        //the cube is renter in Preloader.js
+        child.position.set(0, 2, 0);
+        child.rotation.y = Math.PI / 4;
+      }
+      this.roomChildren[child.name.toLowerCase()] = child;
     });
 
     // the light of the lamp
@@ -64,6 +80,8 @@ export default class Room {
     rectLight.rotation.z = Math.PI / 2;
 
     this.actualRoom.add(rectLight)
+
+    this.roomChildren["rectLight"] = rectLight;
 
     // this.theme.on("switch", (theme) => {
     //   console.log(theme);

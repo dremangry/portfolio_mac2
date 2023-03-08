@@ -12,6 +12,10 @@ html, body{
   /* color: var(--color-text-light); */
 }
 
+body {
+  overflow: hidden;
+}
+
 h1,
 section,
 p,
@@ -62,17 +66,17 @@ svg{
   width: 100%;
   height: 100%;
 }
-/* .hidden{
+.hidden{
   display: none;
-} */
+}
 
 /* section_page---------------------- */
 
 .page{
   z-index:99999;
   width: 100%;
-  /* height: 100vh; */
-  height: 100%;
+  height: 100vh;
+  /* height: 100%; */
   overflow: hidden;
 }
 
@@ -188,12 +192,13 @@ svg{
 }
 
 .section{
+  border: 1px solid black;
   position: relative;
   width: 50%;
   padding: 1000px 4%;
   margin: 0;
   background-color: var(--color-background);
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .left{
@@ -317,6 +322,7 @@ svg{
   background-color: var(--color-green);
 }
 
+
 /* Media Queries */
 
 @media (max-width: 968px){
@@ -351,5 +357,25 @@ svg{
 @media (max-width: 968px){
   .section{
     width: 100%;
+  }
+
+  .dev-main{
+    bottom: 120px;
+  }
+  .dev-second{
+    /* top: 160px; */
+    top: 260px;
+  }
+  .dev-wrapper{
+    width: calc(100% - 60px);
+  }
+  .dev-main-title{
+    font-size: 32px;
+  }
+  .dev-main-description{
+    font-size: 18px;
+  }
+  .dev-second-subheading{
+    font-size: 18px;
   }
 }

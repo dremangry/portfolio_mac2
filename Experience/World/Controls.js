@@ -2,7 +2,7 @@ import * as THREE from "three";
 import Experience from "../Experience";
 import GSAP from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger.js";
-// import ASScroll from "@ashthornton/asscroll";
+import ASScroll from "@ashthornton/asscroll";
 
 
 //control the path of the camera (the curve) and the movement of the room
@@ -20,9 +20,22 @@ export default class Controls {
         this.rectLight = child;
       }
     });
+
+    this.circleFirst = this.experience.world.floor.circleFirst;
+    this.circleSecond = this.experience.world.floor.circleSecond;
+    this.circleThird = this.experience.world.floor.circleThird;
+
     GSAP.registerPlugin(ScrollTrigger);
 
+    if (
+      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      this.setSmoothScroll();
+    }
     this.setScrollTrigger();
+
   }
   // movement of the room
   setScrollTrigger() {
@@ -191,26 +204,233 @@ export default class Controls {
       },
       // all
       "all": () => {
+        // animation of the border of each section
+        this.sections = document.querySelectorAll(".section");
+        this.sections.forEach((section) => {
+          if (section.classList.contains("right")) {
+            GSAP.to(section, {
+              borderTopLeftRadius: 10,
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "top top",
+                scrub: 0.6,
+              },
+            });
+            GSAP.to(section, {
+              borderBottomLeftRadius: 700,
+              scrollTrigger: {
+                trigger: section,
+                start: "bottom bottom",
+                end: "bottom top",
+                scrub: 0.6,
+              },
+            });
+          } else {
+            GSAP.to(section, {
+              borderTopRightRadius: 10,
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "top top",
+                scrub: 0.6,
+              },
+            });
+            GSAP.to(section, {
+              borderBottomRightRadius: 700,
+              scrollTrigger: {
+                trigger: section,
+                start: "bottom bottom",
+                end: "bottom top",
+                scrub: 0.6,
+              },
+            });
+          }
+        })
+        // animation of the bottom circle
+        // First section -----------------------------------------
+        this.firstCircle = new GSAP.timeline({
+          scrollTrigger: {
+            trigger: ".first-move",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.6,
+          },
+        }).to(this.circleFirst.scale, {
+          x: 3,
+          y: 3,
+          z: 3,
+        });
+
+        // Second section -----------------------------------------
+        this.secondCircle = new GSAP.timeline({
+          scrollTrigger: {
+            trigger: ".second-move",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.6,
+          },
+        })
+          .to(
+            this.circleSecond.scale,
+            {
+              x: 3,
+              y: 3,
+              z: 3,
+            },
+            "same"
+          )
+          .to(
+            this.room.position,
+            {
+              y: 0.7,
+            },
+            "same"
+          );
+
+        // Third section -----------------------------------------
+        this.thirdCircle = new GSAP.timeline({
+          scrollTrigger: {
+            trigger: ".third-move",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.6,
+          },
+        }).to(this.circleThird.scale, {
+          x: 3,
+          y: 3,
+          z: 3,
+        });
+
         // mini platform animation
         this.secondPartTimeline = new GSAP.timeline({
           scrollTrigger: {
             trigger: ".third-move",
             start: "center center",
+            // scrub: 0.6,
+            // invalidateOnRefresh: true,
           },
         });
 
         this.room.children.forEach((child) => {
-          if (child.name === "Mini_Floor") {
-            this.first = GSAP.to(child.position, {
-              x: -5.44055,
-              z: 13.6135,
+          if (child.name === "Floor") {
+            this.primero = GSAP.to(child.position, {
+              x: -4.44055,
+              z: 14.55,
+              duration: 0.3,
+            });
+          }
+
+          if (child.name === "Backpack") {
+            this.segundo = GSAP.to(child.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+              ease: "back.out(2)",
+              duration: 0.3,
+            });
+          }
+
+          if (child.name === "Sox") {
+            this.tercero = GSAP.to(child.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+              ease: "back.out(2)",
+              duration: 0.3,
+            });
+          }
+
+          if (child.name === "cube1") {
+            this.cuarto = GSAP.to(child.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+              ease: "back.out(2)",
+              duration: 0.3,
+            });
+          }
+
+          if (child.name === "cube2") {
+            this.quito = GSAP.to(child.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+              ease: "back.out(2)",
+              duration: 0.3,
+            });
+          }
+
+          if (child.name === "cube3") {
+            this.sexto = GSAP.to(child.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+              ease: "back.out(2)",
               duration: 0.3,
             });
           }
         });
+
+        this.secondPartTimeline.add(this.primero);
+        this.secondPartTimeline.add(this.segundo);
+        this.secondPartTimeline.add(this.tercero);
+        this.secondPartTimeline.add(this.cuarto, "-=0.2");
+        this.secondPartTimeline.add(this.quito, "-=0.2");
+        this.secondPartTimeline.add(this.sexto, "-=0.2");
       }
 
     });
+  }
+
+  // ass scroll
+  setupASScroll() {
+    // https://github.com/ashthornton/asscroll
+    const asscroll = new ASScroll({
+      ease: 0.1,
+      disableRaf: true,
+    });
+
+    GSAP.ticker.add(asscroll.update);
+
+    ScrollTrigger.defaults({
+      scroller: asscroll.containerElement,
+    });
+
+    ScrollTrigger.scrollerProxy(asscroll.containerElement, {
+      scrollTop(value) {
+        if (arguments.length) {
+          asscroll.currentPos = value;
+          return;
+        }
+        return asscroll.currentPos;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+      fixedMarkers: true,
+    });
+
+    asscroll.on("update", ScrollTrigger.update);
+    ScrollTrigger.addEventListener("refresh", asscroll.resize);
+
+    requestAnimationFrame(() => {
+      asscroll.enable({
+        newScrollElements: document.querySelectorAll(
+          ".gsap-marker-start, .gsap-marker-end, [asscroll]"
+        ),
+      });
+    });
+    return asscroll;
+  }
+
+  setSmoothScroll() {
+    this.asscroll = this.setupASScroll();
   }
 
   resize() {}
