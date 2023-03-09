@@ -3,11 +3,10 @@ import Experience from "../Experience";
 import Room from "./Room";
 import Controls from "./Controls";
 import Environment from "./Environment.js";
-import Floor from "./Floor.js";
 import { EventEmitter } from "events";
+import Floor from "./Floor.js";
 
-
-export default class World extends EventEmitter {
+export default class World extends EventEmitter  {
   constructor() {
     super();
     this.experience = new Experience();
@@ -22,7 +21,7 @@ export default class World extends EventEmitter {
       this.environment = new Environment();
       this.floor = new Floor();
       this.room = new Room();
-      this.controls = new Controls();
+      // this.controls = new Controls();
       this.emit("worldready");
     });
 

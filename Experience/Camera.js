@@ -9,7 +9,6 @@ export default class Camera {
     this.sizes = this.experience.sizes;
     this.scene = this.experience.scene;
     this.canvas = this.experience.canvas;
-    // console.log(this.experience, this.sizes, this.scene, this.canvas);
 
     this.createPerspectiveCamera();
     this.createOrthographicCamera();
@@ -39,7 +38,6 @@ export default class Camera {
       50
     );
 
-    // this.orthographicCamera.position.y = 5.5;
     this.orthographicCamera.position.y = 5.65;
     this.orthographicCamera.position.z = 10;
     this.orthographicCamera.rotation.x = -Math.PI / 6;

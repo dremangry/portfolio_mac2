@@ -27,22 +27,72 @@ export default class Controls {
 
     GSAP.registerPlugin(ScrollTrigger);
 
-    if (
-      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
-      this.setSmoothScroll();
-    }
+    document.querySelector(".page").style.overflow = "visible";
+
+    // if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    //   this.setSmoothScroll();
+    // }
+    this.setSmoothScroll();
     this.setScrollTrigger();
 
   }
+
+  // ass scroll
+  setupASScroll() {
+    // https://github.com/ashthornton/asscroll
+    const asscroll = new ASScroll({
+      ease: 0.1,
+      disableRaf: true,
+    });
+
+    GSAP.ticker.add(asscroll.update);
+
+    ScrollTrigger.defaults({
+      scroller: asscroll.containerElement,
+    });
+
+    ScrollTrigger.scrollerProxy(asscroll.containerElement, {
+      scrollTop(value) {
+        if (arguments.length) {
+          asscroll.currentPos = value;
+          return;
+        }
+        return asscroll.currentPos;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+      fixedMarkers: true,
+    });
+
+    asscroll.on("update", ScrollTrigger.update);
+    ScrollTrigger.addEventListener("refresh", asscroll.resize);
+
+    requestAnimationFrame(() => {
+      asscroll.enable({
+        newScrollElements: document.querySelectorAll(
+          ".gsap-marker-start, .gsap-marker-end, [asscroll]"
+        ),
+      });
+    });
+    return asscroll;
+  }
+
+  setSmoothScroll() {
+    this.asscroll = this.setupASScroll();
+  }
+
   // movement of the room
   setScrollTrigger() {
     ScrollTrigger.matchMedia({
-
       // desktop
       "(min-width: 969px)": () => {
+        console.log("fired desktop");
         //reset
         this.room.scale.set(0.11, 0.11, 0.11);
         this.rectLight.width = 0.4;
@@ -132,6 +182,7 @@ export default class Controls {
 
       // mobile
       "(max-width: 968px)": () => {
+        console.log("fired mobile");
         // Resets
         this.room.scale.set(0.07, 0.07, 0.07);
         this.room.position.set(0, 0, 0);
@@ -381,56 +432,6 @@ export default class Controls {
       }
 
     });
-  }
-
-  // ass scroll
-  setupASScroll() {
-    // https://github.com/ashthornton/asscroll
-    const asscroll = new ASScroll({
-      ease: 0.1,
-      disableRaf: true,
-    });
-
-    GSAP.ticker.add(asscroll.update);
-
-    ScrollTrigger.defaults({
-      scroller: asscroll.containerElement,
-    });
-
-    ScrollTrigger.scrollerProxy(asscroll.containerElement, {
-      scrollTop(value) {
-        if (arguments.length) {
-          asscroll.currentPos = value;
-          return;
-        }
-        return asscroll.currentPos;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-      fixedMarkers: true,
-    });
-
-    asscroll.on("update", ScrollTrigger.update);
-    ScrollTrigger.addEventListener("refresh", asscroll.resize);
-
-    requestAnimationFrame(() => {
-      asscroll.enable({
-        newScrollElements: document.querySelectorAll(
-          ".gsap-marker-start, .gsap-marker-end, [asscroll]"
-        ),
-      });
-    });
-    return asscroll;
-  }
-
-  setSmoothScroll() {
-    this.asscroll = this.setupASScroll();
   }
 
   resize() {}
