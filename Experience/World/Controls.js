@@ -95,8 +95,10 @@ export default class Controls {
         console.log("fired desktop");
         //reset
         this.room.scale.set(0.11, 0.11, 0.11);
-        this.rectLight.width = 0.4;
-        this.rectLight.height = 0.4;
+        if (this.rectLight) {
+          this.rectLight.width = 0.4;
+          this.rectLight.height = 0.4;
+        }
         this.camera.orthographicCamera.position.set(0, 6.5, 10);
         this.room.position.set(0, 0, 0);
         // First part -----------------------------------------
@@ -186,8 +188,10 @@ export default class Controls {
         // Resets
         this.room.scale.set(0.07, 0.07, 0.07);
         this.room.position.set(0, 0, 0);
-        this.rectLight.width = 0.3;
-        this.rectLight.height = 0.4;
+        if (this.rectLight) {
+          this.rectLight.width = 0.3;
+          this.rectLight.height = 0.4;
+        }
         this.camera.orthographicCamera.position.set(0, 6.5, 10);
 
         // First part -----------------------------------------

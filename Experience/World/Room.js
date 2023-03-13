@@ -16,7 +16,13 @@ export default class Room {
 
     this.theme = this.experience.theme;
 
-    this.lerp = {
+    this.horizontalLerp = {
+      current: 0,
+      target: 0,
+      ease: 0.1,
+    }
+
+    this.verticalLerp = {
       current: 0,
       target: 0,
       ease: 0.1,
@@ -32,14 +38,11 @@ export default class Room {
 
       if (child instanceof THREE.Group) {
         child.children.forEach((groupchild) => {
-          // console.log(groupchild.material);
           groupchild.castShadow = true;
           groupchild.receiveShadow = true;
         });
       }
-      // console.log('!!!!!!!!',child);
       if (child.name === "Monitors") {
-        console.log('!!!!!!!!', child);
         child.children[2].material = new THREE.MeshBasicMaterial({
           map: this.resources.items.screen,
         });
@@ -83,15 +86,6 @@ export default class Room {
 
     this.roomChildren["rectLight"] = rectLight;
 
-    // this.theme.on("switch", (theme) => {
-    //   console.log(theme);
-    //   if (theme === 'dark') {
-    //     this.actualRoom.add(rectLight)
-    //   } else {
-      //     this.actualRoom.remove(rectLight)
-      //   }
-      // });
-
     const rectLightHelper = new RectAreaLightHelper(rectLight);
     rectLight.add(rectLightHelper);
 
@@ -102,11 +96,13 @@ export default class Room {
   // control the rotation of the room based on the camera
   onMouseMove() {
     window.addEventListener("mousemove", (e) => {
-      // console.log(e);
       this.rotation =
         ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
-      // this.lerp.target = this.rotation * 0.05;
-      this.lerp.target = this.rotation * 0.1; // rotation of the room
+      this.horizontalLerp.target = this.rotation * 0.1; // rotation of the room
+
+      this.rotationTwo =
+        ((e.clientY - window.innerHeight / 2) * 2) / window.innerHeight;
+      this.verticalLerp.target = this.rotationTwo * 0.1; // rotation of the room
     });
   }
 
@@ -116,13 +112,18 @@ export default class Room {
   }
   //update in real time all the function
   update() {
-    this.lerp.current = GSAP.utils.interpolate(
-      this.lerp.current,
-      this.lerp.target,
-      this.lerp.ease
+    this.horizontalLerp.current = GSAP.utils.interpolate(
+      this.horizontalLerp.current,
+      this.horizontalLerp.target,
+      this.horizontalLerp.ease
     );
+    this.verticalLerp.current = GSAP.utils.interpolate(
+      this.verticalLerp.current,
+      this.verticalLerp.target,
+      this.verticalLerp.ease
+    );
+    this.actualRoom.rotation.y = this.horizontalLerp.current; // move from left to right thanks to onMouseMove()
 
-    this.actualRoom.rotation.y = this.lerp.current; // move from left to right thanks to onMouseMove()
-    // this.actualRoom.rotation.x = this.lerp.current;
+    this.actualRoom.rotation.x = this.verticalLerp.current;
   }
 }

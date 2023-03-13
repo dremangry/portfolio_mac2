@@ -29,7 +29,9 @@ svg{
 :root{
   /* Light Theme Variables */
   --color-text-light: #333332;
-  --color-background-light: #FAF4E5;
+  /* --color-background-light: #FAF4E5; */
+  --color-background-light: #DBD0C2;
+  --color-background-description-light: rgba(199, 136, 19, 0.568);
   --color-pink-light: #e5a1aa;
   --color-green-light: #7AD0AC;
   --color-blue-light: #8395CD;
@@ -42,6 +44,7 @@ svg{
 .light-theme{
   --color-text: var(--color-text-light);
   --color-background: var(--color-background-light);
+  --color-background-description: var(--color-background-description-light);
   --color-pink: var(--color-pink-light);
   --color-green: var(--color-green-light);
   --color-blue: var(--color-blue-light);
@@ -138,9 +141,22 @@ svg{
   align-items: center;
   position: absolute;
   top: 45%;
-  left: 50%;
+  /* left: 50%; */
+  left: 62%;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
+  color: var(--color-text);
+  transform: translate(-50%, -50%);
+}
+.intro-text-two{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 49%;
+  left: 48%;
+  font-weight: 600;
+  font-size: 20px;
   color: var(--color-text);
   transform: translate(-50%, -50%);
 }
@@ -241,12 +257,12 @@ svg{
 }
 
 .dev-wrapper{
+  /* border: 1px solid red; */
   position: relative;
   height: 100%;
-  /* width: 100%; */
   width: calc(100% - 160px);
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1400px;
 }
 
 .dev-main{
@@ -257,42 +273,61 @@ svg{
 }
 
 .dev-second{
+  border: 1px solid red;
   position: absolute;
-  top: calc(50% - 120px);
+  top: calc(35% - 120px);
   right: 0;
   color: var(--color-text);
+  margin-right: 100px;
 }
 
 .dev-main-title{
-  font-size: 64px;
+  font-size: 66px;
   color: var(--color-text);
 }
 
 .dev-main-description{
-  font-size: 18px;
+  font-size: 40px;
   color: var(--color-text);
 }
 
 .dev-second-subheading{
-  font-size: 32px;
-  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 600;
   color: var(--color-text);
 }
+/* .second-sub {
+  padding-top: 5px;
+  padding-left: 5px;
+  font-size: 20px;
+  font-weight: 600;
+} */
 
 /* Section_info ---------------------- */
 
 .section-margin{
-  height: 3000px;
+  border: 1px solid black;
+  height: 2000px;
   width: 100%;
 }
 
-.section{
+/* .section{
   border: 1px solid black;
   position: relative;
   width: 50%;
   padding: 1000px 4%;
   margin: 0;
   background-color: var(--color-background);
+  overflow: hidden;
+} */
+.section{
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  position: relative;
+  width: 50%;
+  padding: 1000px 4%;
+  margin: 0;
+  background-color: var(--color-background-description);
   overflow: hidden;
 }
 
@@ -352,7 +387,7 @@ svg{
   transform-origin: left;
   transform: skewY(25deg);
   z-index: 5;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--color-text);
 }
 
@@ -431,8 +466,19 @@ svg{
   .dev-main{
     bottom: 120px;
   }
+  .intro-text {
+    top: 44%;
+    left: 50%;
+    font-size: 13.2px;
+  }
+  .intro-text-two {
+    top: 47%;
+    font-size: 17px;
+  }
+
   .dev-second{
     top: 160px;
+    margin: auto;
   }
   .dev-wrapper{
     width: calc(100% - 60px);

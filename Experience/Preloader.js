@@ -27,6 +27,7 @@ export default class Preloader extends EventEmitter {
 
   setAssets() {
     convert(document.querySelector(".intro-text"));
+    convert(document.querySelector(".intro-text-two"));
     convert(document.querySelector(".dev-main-title"));
     convert(document.querySelector(".dev-main-description"));
     convert(document.querySelector(".dev-second-subheading"));
@@ -83,6 +84,11 @@ export default class Preloader extends EventEmitter {
           stagger: 0.05,
           ease: "back.out(1.7)",
         })
+        .to(".intro-text-two .animatedis", {
+          yPercent: 0,
+          stagger: 0.03,
+          ease: "back.out(1.7)",
+        })
         .to(".arrow-svg-wrapper", {
           opacity: 1,
         }, 'same')
@@ -96,6 +102,11 @@ export default class Preloader extends EventEmitter {
     return new Promise((resolve) => {
       this.secondTimeline = new GSAP.timeline();
       this.secondTimeline.to(".intro-text .animatedis", {
+        yPercent: 100,
+        stagger: 0.04,
+        ease: "back.in(1.7)",
+      }, 'fadeout')
+      .to(".intro-text-two .animatedis", {
         yPercent: 100,
         stagger: 0.04,
         ease: "back.in(1.7)",
@@ -156,11 +167,11 @@ export default class Preloader extends EventEmitter {
         stagger: 0.07,
         ease: "back.out(1.7)",
       }, 'intro')
-      .to(".first-sub .animatedis", {
-        yPercent: 0,
-        stagger: 0.07,
-        ease: "back.out(1.7)",
-      }, 'intro')
+      // .to(".first-sub .animatedis", {
+      //   yPercent: 0,
+      //   stagger: 0.07,
+      //   ease: "back.out(1.7)",
+      // }, 'intro')
       .to(".second-sub .animatedis", {
         yPercent: 0,
         stagger: 0.07,
@@ -173,7 +184,7 @@ export default class Preloader extends EventEmitter {
         z: 1,
         ease: "back.out(2.2)",
         duration: 0.4,
-      }, ">-0.6")
+      }, "intro")
       .to(this.roomChildren.table.scale, { //table
         x: 1,
         y: 1,
@@ -315,8 +326,8 @@ export default class Preloader extends EventEmitter {
   }
 
   scale() {
-    this.roomChildren.rectLight.width = 0;
-    this.roomChildren.rectLight.height = 0;
+    // this.roomChildren.rectLight.width = 0;
+    // this.roomChildren.rectLight.height = 0;
 
     if (this.device === "desktop") {
       this.room.scale.set(0.11, 0.11, 0.11);

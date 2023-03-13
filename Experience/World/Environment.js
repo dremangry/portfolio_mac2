@@ -48,12 +48,12 @@ export default class Environment {
     // this.scene.add(helper);
 
     this.sunLight.position.set(-1.5, 7, 3);
-    // this.sunLight.position.set(3, 7, 3); slight darker
-    // this.sunLight.position.set(1.5, 7, 3);
+    // this.sunLight.position.set(3, 7, 3); //slight darker
     this.scene.add(this.sunLight);
 
-    this.ambientLight = new THREE.AmbientLight("#FCEAD2", 1); //light color
-    // this.ambientLight = new THREE.AmbientLight("#5c677d", 1);
+    // this.ambientLight = new THREE.AmbientLight("#E1C194", 1); light beige
+    this.ambientLight = new THREE.AmbientLight("#caf0f8", 1); //light blue
+    // this.ambientLight = new THREE.AmbientLight("#ade8f4", 1); //light blue 2
     this.scene.add(this.ambientLight);
   }
 
@@ -76,7 +76,7 @@ export default class Environment {
       GSAP.to(this.ambientLight, {
         intensity: 0.78,
       });
-      
+
     } else { //light theme
       GSAP.to(this.sunLight.color, {
         r: 255 / 255,
