@@ -9,4 +9,9 @@ export default [
     type: "videoTexture",
     path: "/textures/code-video.mp4",
   },
+  {
+    name: "screen2",
+    type: "videoTexture",
+    path: "/textures/media-video.mp4",
+  },
 ];

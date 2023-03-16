@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <link rel="icon" type="image" href="cube.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Marc-Andre Ramirez</title>
   </head>
   <body class="light-theme">
     <!-- where the three js scene lives -->
@@ -43,9 +43,8 @@
           <div class="dev-wrapper">
 
             <!-- Intro -->
-            <!-- <div class="intro-text">&#8220;Success is the progressive realization of a worthy goal or ideal.&#8221;</div> -->
-            <div class="intro-text">&#8220;Success&#8221;</div>
-            <div class="intro-text-two">Earl</div>
+            <div class="intro-text">&#8220;Success is the progressive realization of a worthy goal or ideal.&#8221;</div>
+            <div class="intro-text-two">Earl Nightingale</div>
             <div class="arrow-svg-wrapper">
               <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path fill="currentColor" d="M12 14.95q-.2 0-.375-.063-.175-.062-.325-.212L6.675 10.05q-.275-.275-.262-.688.012-.412.287-.687.275-.275.7-.275.425 0 .7.275l3.9 3.9 3.925-3.925q.275-.275.688-.263.412.013.687.288.275.275.275.7 0 .425-.275.7l-4.6 4.6q-.15.15-.325.212-.175.063-.375.063Z"/></svg>
             </div>
@@ -65,73 +64,150 @@
         <!-- first section -->
         <section class="first-section section left">
           <div class="section-intro-wrapper">
-            <h1 class="section-title">
-              <span class="section-title-text">About Me</span>
-              <div class="section-title-decoration styleOne"></div>
-              <div class="section-title-decoration styleTwo"></div>
-              <div class="section-title-decoration styleThree"></div>
-            </h1>
+            <h1 class="section-title-text">About</h1>
+            <h1 class="section-title-text">Me&#46;</h1>
             <span class="section-number">01</span>
           </div>
 
           <div class="section-detail-wrapper">
+            <div class="imageContainer">
+              <img src="profileImage2.jpg" alt="profile">
+            </div>
+
             <h3 class="section-heading">Hello!</h3>
-            <p class="section-text">Hi there 👋! I'm a third-year digital media student from UK currently studying in Germany. My dream is to work for Disney or Pixar one day.</p>
-            <p class="section-text"> I love creating art and playing with my cats! I also like drinking bubble tea and going for hikes! Totally hippie lol ✌️. Welcome to my portfolio!</p>
+            <h3 class="section-text">Based in Montreal, I am a committed web developer with 2 years of experience who places great value on the quality of my work. My passion lies in both the technical and visual aspects of digital products, having worked on a variety of Front-End to Back-End applications over the past years. I am a driven and imaginative individual who recognizes the value of hard work, learning from mistakes, and persevering. Moving forward, I plan to enhance my existing skills and acquire new ones to advance in my career. Beyond coding, I enjoy pursuing photography, rock climbing, and cycling.</h3>
+
+            <div class="mediaContainer">
+              <div class="media">
+                <a href="https://www.linkedin.com/in/marc-andr%C3%A9-ramirez-939293222/">
+                  <img src="media1.png" alt="">
+                </a>
+              </div>
+              <div class="media">
+                <a href="https://github.com/dremangry">
+                  <img src="media2.png" alt="">
+                </a>
+              </div>
+              <div class="media">
+                <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=andrezreyes2015@gmail.com">
+                  <img src="media3.png" alt="">
+                </a>
+              </div>
+            </div>
           </div>
+
         </section>
 
         <div class="second-move section-margin"></div>
         <!-- second section -->
-        <section class="second-section section right">
-          <!-- <div class="progress-wrapper progress-bar-wrapper-right">
-            <div class="progress-bar blue-background"></div>
-          </div> -->
+        <section class="section right">
 
           <div class="section-intro-wrapper blue-text blue-border">
-            <h1 class="section-title blue-text blue-border">
-              <span class="section-title-text blue-text">My Work</span>
-              <div class="section-title-decoration styleOne blue-border"></div>
-              <div class="section-title-decoration styleTwo blue-border"></div>
-              <div class="section-title-decoration styleThree blue-background blue-border"></div>
-            </h1>
+            <h1 class="section-title-text">My</h1>
+            <h1 class="section-title-text">Work&#46;</h1>
             <span class="section-number blue-text">02</span>
           </div>
 
-          <div class="section-detail-wrapper">
-            <h3 class="section-heading">Candycane Village</h3>
-            <p class="section-text">This project is in progress but it's about a super colorful village where the entire world including the people are candies. So far the story is that they are set out to explore their "space" only to realize it's a human that will try to destroy them.</p>
-            <h3 class="section-heading">Rebecca's Reddish Radishes</h3>
-            <p class="section-text">Oh what's that? Why, it's a red radish! Oop, another one! In this playful and comedy animation, Rebecca, a young farmer, decided to plant radishes for the first time, but there is a big twist!</p>
-            <h3 class="section-heading">Flora</h3>
-            <p class="section-text">A heartwarming story about a little orphan girl who tries to find her way back home.</p>
+          <div class="section-detail-wrapper second-section">
+
+            <div class="tabs">
+              <input type="radio" name="tabs" id="tabone" checked="checked">
+              <label for="tabone">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path fill="currentColor" d="M7.5 34.333v-13.5H1.333L20 4l7.333 6.542v-4.75H32.5v9.458l6.167 5.583H32.5v13.5H21.833V23.667h-3.666v10.666Zm3.5-3.5h3.667V20.167h10.666v10.666H29V16.875l-9-8.167-9 8.125Zm3.667-10.666h10.666-10.666Zm1.625-3.667h7.416q0-1.458-1.104-2.396-1.104-.937-2.604-.937-1.458 0-2.583.937-1.125.938-1.125 2.396Z"/></svg>
+              </label>
+              <div class="tab">
+                <h1>Real Dream</h1>
+                <h3>Real Estate website displaying a variety of properties to sell all around the United States. This API helps to query properties for sale, rent, sold, etc build with React and Material UI.</h3>
+                  <a href="https://real-estate-app-sage-two.vercel.app/">
+                    <button class="button-30" role="button">Check it out</button>
+                  </a>
+              </div>
+
+              <input type="radio" name="tabs" id="tabtwo">
+              <label for="tabtwo">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path fill="currentColor" d="M7.625 37.5q-1.417 0-2.458-1.042Q4.125 35.417 4.125 34V8.667q0-1.417 1.042-2.459 1.041-1.041 2.458-1.041h1.458V2.5h3.625v2.667h14.584V2.5h3.625v2.667h1.458q1.417 0 2.458 1.041 1.042 1.042 1.042 2.459V34q0 1.417-1.042 2.458-1.041 1.042-2.458 1.042Zm0-3.5h24.75V15.833H7.625V34Zm0-21.667h24.75V8.667H7.625Zm0 0V8.667v3.666Zm3.583 10.709v-3.5h17.584v3.5Zm0 7.333v-3.5h12.5v3.5Z"/></svg>
+              </label>
+              <div class="tab">
+                <h1>Task manager</h1>
+                <h3>This project was built with Vue.js version 2 and Vuetify to show the developer's abilities to understand and develop simple and complex programming logic.</h3>
+                  <a href="https://my-todolist-app-ten.vercel.app/">
+                    <button class="button-30" role="button">Check it out</button>
+                  </a>
+              </div>
+
+              <input type="radio" name="tabs" id="tabthree">
+              <label for="tabthree">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path fill="currentColor" d="M5.458 25.667q-2.25 0-3.833-1.584Q.042 22.5.042 20.292q0-2.25 1.604-3.834 1.604-1.583 3.812-1.583V11q0-1.417 1.063-2.458Q7.583 7.5 8.958 7.5h5.667q0-2.25 1.583-3.812Q17.792 2.125 20 2.125q2.208 0 3.792 1.563Q25.375 5.25 25.375 7.5h5.667q1.375 0 2.437 1.042Q34.542 9.583 34.542 11v3.875q2.208 0 3.812 1.583 1.604 1.584 1.604 3.792 0 2.25-1.583 3.833-1.583 1.584-3.833 1.584v7q0 1.416-1.063 2.458-1.062 1.042-2.437 1.042H8.958q-1.375 0-2.437-1.042-1.063-1.042-1.063-2.458Zm9-4.334q.959 0 1.646-.666.688-.667.688-1.625 0-.959-.688-1.625-.687-.667-1.646-.667-.958 0-1.625.667-.666.666-.666 1.625 0 .958.666 1.625.667.666 1.625.666Zm11.084 0q.958 0 1.625-.666.666-.667.666-1.625 0-.959-.666-1.625-.667-.667-1.625-.667-.959 0-1.625.667-.667.666-.667 1.625 0 .958.667 1.625.666.666 1.625.666Zm-12.875 7.625h14.666v-3.5H12.667Zm-3.709 3.709h22.084V11H8.958Zm0 0V11v21.667Z"/></svg>
+              </label>
+              <div class="tab">
+                <h1>Guess my number</h1>
+                <h3>Guess my number game with different level of difficulty created with Javascript and Jquery.</h3>
+                  <a href="https://dremangry.github.io/guessMyNumber/">
+                    <button class="button-30" role="button">Check it out</button>
+                  </a>
+              </div>
+
+              <input type="radio" name="tabs" id="tabfoor">
+              <label for="tabfoor">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path fill="currentColor" d="m5.542 5.833 3.5 7.209h5.375l-3.542-7.209H14.5l3.542 7.209h5.375l-3.584-7.209H23.5l3.5 7.209h5.375l-3.542-7.209h5.209q1.416 0 2.458 1.042 1.042 1.042 1.042 2.458v21.334q0 1.416-1.042 2.458-1.042 1.042-2.458 1.042H5.958q-1.416 0-2.458-1.042-1.042-1.042-1.042-2.458V9.333q0-1.416.875-2.354.875-.937 2.209-1.146Zm.416 10.709v14.125h28.084V16.542Zm0 0v14.125Z"/></svg>
+              </label>
+              <div class="tab">
+                <h1>OMDB api</h1>
+                <h3>The OMDb API is a RESTful web service created to obtain information and reviews about movies. Build with React.</h3>
+                  <a href="https://react-omdb-app-zeta.vercel.app/">
+                    <button class="button-30" role="button">Check it out</button>
+                  </a>
+              </div>
+            </div>
           </div>
         </section>
 
         <div class="third-move section-margin"></div>
         <!-- third section -->
         <section class="third-section section left">
-          <!-- <div class="progress-wrapper progress-bar-wrapper-left">
-            <div class="progress-bar green-background"></div>
-          </div> -->
-
-          <div class="section-intro-wrapper green-text green-border">
-            <h1 class="section-title green-text green-border">
-              <span class="section-title-text green-text">Contact Me</span>
-              <div class="section-title-decoration styleOne green-border"></div>
-              <div class="section-title-decoration styleTwo green-border"></div>
-              <div class="section-title-decoration styleThree green-background green-border"></div>
+          <div class="section-intro-wrapper">
+            <h1 class="section-title">
+              <h1 class="section-title-text toolbox">My</h1>
+              <h1 class="section-title-text toolbox">Toolbox&#46;</h1>
             </h1>
-            <span class="section-number green-text">03</span>
+            <span class="section-number">03</span>
           </div>
 
           <div class="section-detail-wrapper">
-            <h3 class="section-heading">ArtStation</h3>
-            <p class="section-text">I post all my work here. I don't want to link it yet because I want to sort it out a little bit!</p>
-            <h3 class="section-heading">Instagram</h3>
-            <p class="section-text">Check out my personal instagram for travel pics and food and stuff.</p>
-            <h3 class="section-heading">LinkedIn</h3>
-            <p class="section-text">Career updates and so much more!</p>
+            <div class='mySkills'>
+              <h1>🧰</h1>
+
+              <span class="border tl">border-top-left</span>
+              <span class="border tr">border-top-right</span>
+              <span class="border bl">border-bottom-left</span>
+              <span class="border br">border-bottom-right</span>
+
+              <span class="tag tag-html tag-lg">HTML</span>
+              <span class="tag tag-css tag-lg">CSS</span>
+              <span class="tag tag-sass tag-lg">SASS</span>
+              <span class="tag tag-bootstrap tag-lg">Bootstrap</span>
+              <span class="tag tag-javascript tag-lg">Javascript</span>
+              <span class="tag tag-jquery tag-lg">Jquery</span>
+              <span class="tag tag-react tag-lg">React</span>
+              <span class="tag tag-native tag-lg">React native</span>
+              <span class="tag tag-svelte tag-lg">Svelte</span>
+              <span class="tag tag-sql tag-lg">MySQL</span>
+              <span class="tag tag-vscode tag-lg">vscode</span>
+              <span class="tag tag-github tag-lg">Github</span>
+              <span class="tag tag-slack tag-lg">Slack</span>
+              <span class="tag tag-git tag-lg">Git</span>
+              <span class="tag tag-rest tag-lg">REST API</span>
+              <span class="tag tag-vue tag-lg">Vue</span>
+              <span class="tag tag-vuetify tag-lg">Vuetify</span>
+            </div>
+          </div>
+          <div class="acknowledge">
+            <h3>Inspired by boko33</h3>
+            <div class="media">
+                <a href="https://twitter.com/bokoko33">
+                  <img src="media4.png" alt="">
+                </a>
+            </div>
           </div>
         </section>
       </div>

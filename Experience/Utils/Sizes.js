@@ -24,11 +24,9 @@ export default class Sizes extends EventEmitter {
       if (this.width < 968 && this.device !== "mobile") {
         this.device = "mobile";
         this.emit("switchdevice", this.device);
-        console.log('mobile');
       } else if (this.width >= 968 && this.device !== "desktop") {
         this.device = "desktop";
         this.emit("switchdevice", this.device);
-        console.log('desktop');
       }
     });
   }

@@ -35,7 +35,6 @@ export default class Preloader extends EventEmitter {
 
     this.room = this.experience.world.room.actualRoom;
     this.roomChildren = this.experience.world.room.roomChildren;
-    console.log('######',this.roomChildren);
   }
 
   firstIntro() {
@@ -63,7 +62,6 @@ export default class Preloader extends EventEmitter {
             x: -1,
             ease: "power1.out",
             duration: 0.7,
-            // onComplete: resolve,
           })
       } else {
           this.timeline.to(this.roomChildren.cube.scale, {
@@ -167,11 +165,6 @@ export default class Preloader extends EventEmitter {
         stagger: 0.07,
         ease: "back.out(1.7)",
       }, 'intro')
-      // .to(".first-sub .animatedis", {
-      //   yPercent: 0,
-      //   stagger: 0.07,
-      //   ease: "back.out(1.7)",
-      // }, 'intro')
       .to(".second-sub .animatedis", {
         yPercent: 0,
         stagger: 0.07,
@@ -271,7 +264,6 @@ export default class Preloader extends EventEmitter {
 
   onScroll(e) {
     if (e.deltaY > 0) {
-      console.log('event');
       this.removeEventListeners();
       this.playSecondIntro();
     }
@@ -285,7 +277,6 @@ export default class Preloader extends EventEmitter {
     let currentY = e.touches[0].clientY;
     let difference = this.initalY - currentY;
     if (difference > 0) {
-      console.log("swipped up");
       this.removeEventListeners();
       this.playSecondIntro();
     }

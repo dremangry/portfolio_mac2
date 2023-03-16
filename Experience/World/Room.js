@@ -1,8 +1,6 @@
 import * as THREE from "three";
 import Experience from "../Experience";
 import GSAP from "gsap";
-import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper.js";
-import { Color } from "three";
 
 export default class Room {
   constructor() {
@@ -46,6 +44,9 @@ export default class Room {
         child.children[2].material = new THREE.MeshBasicMaterial({
           map: this.resources.items.screen,
         });
+        child.children[3].material = new THREE.MeshBasicMaterial({
+          map: this.resources.items.screen2,
+        });
       }
       // hiding the mini floor
       if (child.name === "Floor") {
@@ -86,9 +87,6 @@ export default class Room {
 
     this.roomChildren["rectLight"] = rectLight;
 
-    const rectLightHelper = new RectAreaLightHelper(rectLight);
-    rectLight.add(rectLightHelper);
-
     this.scene.add(this.actualRoom);
     this.actualRoom.scale.set(0.11, 0.11, 0.11);
   }
@@ -106,10 +104,6 @@ export default class Room {
     });
   }
 
-
-  resize() {
-
-  }
   //update in real time all the function
   update() {
     this.horizontalLerp.current = GSAP.utils.interpolate(
