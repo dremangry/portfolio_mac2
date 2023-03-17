@@ -48,12 +48,9 @@ export default class Environment {
     // this.scene.add(helper);
 
     this.sunLight.position.set(-1.5, 7, 3);
-    // this.sunLight.position.set(3, 7, 3); //slight darker
     this.scene.add(this.sunLight);
 
-    // this.ambientLight = new THREE.AmbientLight("#E1C194", 1); light beige
     this.ambientLight = new THREE.AmbientLight("#caf0f8", 1); //light blue
-    // this.ambientLight = new THREE.AmbientLight("#ade8f4", 1); //light blue 2
     this.scene.add(this.ambientLight);
   }
 
@@ -97,12 +94,4 @@ export default class Environment {
     }
   }
 
-
-  resize() {
-
-  }
-
-  update() {
-
-  }
 }
